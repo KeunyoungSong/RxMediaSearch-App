@@ -19,7 +19,7 @@ object RetrofitManager {
 	private val gson = GsonBuilder().setLenient().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").create()
 	
 	private val retrofit = Retrofit.Builder()
-		.baseUrl("https://dapi.kako.com/v2/search")
+		.baseUrl("https://dapi.kako.com/v2/search/")
 		.addConverterFactory(GsonConverterFactory.create(gson))
 		.addCallAdapterFactory(RxJava3CallAdapterFactory.create())
 		.client(okHttpClient)
