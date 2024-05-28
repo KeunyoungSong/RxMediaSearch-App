@@ -50,6 +50,9 @@ dependencies {
 	implementation("com.squareup.retrofit2:retrofit:2.11.0")
 	implementation("com.squareup.retrofit2:converter-gson:2.11.0")
 	implementation("io.coil-kt:coil:2.4.0")
+	implementation("com.squareup.retrofit2:adapter-rxjava3:2.9.0")
+	implementation("io.reactivex.rvjava3:rxandroid:3.1.8")
+	implementation("io.reactivex.rxjava3:rxkotlin:3.0.1")
 	
 	testImplementation(libs.junit)
 	androidTestImplementation(libs.androidx.junit)
