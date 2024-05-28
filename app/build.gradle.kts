@@ -34,6 +34,10 @@ android {
 	buildFeatures {
 		dataBinding = true
 	}
+	
+	testOptions {
+		unitTests.isReturnDefaultValues = true
+	}
 }
 
 //noinspection UseTomlInstead
@@ -59,9 +63,17 @@ dependencies {
 	
 	implementation("androidx.fragment:fragment-ktx:1.7.1")
 	
+	// 테스트를 위한 의존성 추가
+	testImplementation("junit:junit:4.13.2")
+	testImplementation("org.mockito:mockito-core:3.12.4")
+	testImplementation("org.mockito:mockito-inline:3.12.4")
+	testImplementation("org.mockito:mockito-junit-jupiter:3.12.4")
+	testImplementation("net.bytebuddy:byte-buddy:1.10.22")
+	testImplementation("net.bytebuddy:byte-buddy-agent:1.10.22")
 	
+	androidTestImplementation("androidx.test.ext:junit:1.1.3")
+	androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+	androidTestImplementation("org.mockito:mockito-android:3.12.4")
+	androidTestImplementation("androidx.arch.core:core-testing:2.1.0")
 	
-	testImplementation(libs.junit)
-	androidTestImplementation(libs.androidx.junit)
-	androidTestImplementation(libs.androidx.espresso.core)
 }
