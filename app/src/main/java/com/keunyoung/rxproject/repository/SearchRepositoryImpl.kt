@@ -1,5 +1,6 @@
 package com.keunyoung.rxproject.repository
 
+import android.util.Log
 import com.keunyoung.rxproject.SearchService
 import com.keunyoung.rxproject.model.ListItem
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -11,8 +12,8 @@ class SearchRepositoryImpl(private val searchService: SearchService) : SearchRep
 		return searchService.searchImage(query)
 			.zipWith(searchService.searchVideo(query)) { imageResult, videoResult ->
 				mutableListOf<ListItem>().apply {
-					addAll(imageResult.document)
-					addAll(videoResult.document)
+					addAll(imageResult.documents)
+					addAll(videoResult.documents)
 				}.sortedBy { it.dateTime }
 			}
 			.subscribeOn(Schedulers.io())

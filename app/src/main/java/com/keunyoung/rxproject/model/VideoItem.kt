@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 import java.util.Date
 
 data class VideoListResponse(
-	val document: List<VideoItem>
+	val documents: List<VideoItem>
 )
 
 data class VideoItem(
