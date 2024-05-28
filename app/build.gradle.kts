@@ -1,6 +1,7 @@
 plugins {
 	alias(libs.plugins.androidApplication)
 	alias(libs.plugins.jetbrainsKotlinAndroid)
+	id("kotlin-kapt")
 }
 
 android {
@@ -30,8 +31,12 @@ android {
 	kotlinOptions {
 		jvmTarget = "1.8"
 	}
+	buildFeatures {
+		dataBinding = true
+	}
 }
 
+//noinspection UseTomlInstead
 dependencies {
 	
 	implementation(libs.androidx.core.ktx)
@@ -39,6 +44,13 @@ dependencies {
 	implementation(libs.material)
 	implementation(libs.androidx.activity)
 	implementation(libs.androidx.constraintlayout)
+	
+	
+	implementation("com.squareup.okhttp3:okhttp:4.12.0")
+	implementation("com.squareup.retrofit2:retrofit:2.11.0")
+	implementation("com.squareup.retrofit2:converter-gson:2.11.0")
+	implementation("io.coil-kt:coil:2.4.0")
+	
 	testImplementation(libs.junit)
 	androidTestImplementation(libs.androidx.junit)
 	androidTestImplementation(libs.androidx.espresso.core)
