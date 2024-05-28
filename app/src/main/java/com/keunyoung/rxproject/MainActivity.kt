@@ -1,20 +1,43 @@
 package com.keunyoung.rxproject
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.view.Menu
+import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.keunyoung.rxproject.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+	
+	private lateinit var binding: ActivityMainBinding
+	
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
-		enableEdgeToEdge()
-		setContentView(R.layout.activity_main)
-		ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-			val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-			v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-			insets
+		binding = ActivityMainBinding.inflate(layoutInflater).apply {
+			setContentView(root)
+			view = this@MainActivity
 		}
+	}
+	
+	// 검색 메뉴 활성화
+	override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+		menuInflater.inflate(R.menu.options_menu, menu)
+		val searchItem = menu?.findItem(R.id.search)
+		val searchView = searchItem?.actionView as? SearchView
+		searchView?.let {
+			setupSearchView(it)
+		}
+		return true
+	}
+	
+	private fun setupSearchView(searchView: SearchView) {
+		searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+			override fun onQueryTextSubmit(query: String?): Boolean {
+				return false
+			}
+			
+			override fun onQueryTextChange(newText: String?): Boolean {
+				return false
+			}
+		})
 	}
 }
