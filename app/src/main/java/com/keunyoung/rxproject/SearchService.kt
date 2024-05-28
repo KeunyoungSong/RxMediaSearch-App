@@ -9,12 +9,12 @@ import retrofit2.http.Query
 
 interface SearchService {
 	
-	@Headers("Authorization: KakoAK b2613969061fe6dfb5d6ac25dbdba9dd")
+	@Headers("Authorization: KakaoAK c2f850eb276516bb881564663fd727eb")
 	@GET("image")
 	fun searchImage(@Query("query") query: String): Observable<ImageListResponse>
 	
-	@Headers("Authorization: KakoAK b2613969061fe6dfb5d6ac25dbdba9dd")
-	@GET("video")
+	@Headers("Authorization: KakaoAK c2f850eb276516bb881564663fd727eb")
+	@GET("vclip")
 	fun searchVideo(@Query("query") query: String): Observable<VideoListResponse>
 	
 }
