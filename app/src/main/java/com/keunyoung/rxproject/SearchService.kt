@@ -1,8 +1,8 @@
 package com.keunyoung.rxproject
 
-import android.database.Observable
 import com.keunyoung.rxproject.model.ImageListResponse
 import com.keunyoung.rxproject.model.VideoListResponse
+import io.reactivex.rxjava3.core.Observable
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Query
