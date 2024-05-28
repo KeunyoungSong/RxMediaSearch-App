@@ -8,6 +8,10 @@
         <variable
             name="item"
             type="com.keunyoung.rxproject.model.VideoItem" />
+
+        <variable
+            name="handler"
+            type="com.keunyoung.rxproject.list.ItemHandler" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -81,6 +85,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:favorite="@{item.favorite}"
+            android:onClick="@{()->handler.onClickFavorite(item)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>

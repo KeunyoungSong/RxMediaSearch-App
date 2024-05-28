@@ -13,7 +13,9 @@ import com.keunyoung.rxproject.list.viewholder.VideoViewHolder
 import com.keunyoung.rxproject.model.ImageItem
 import com.keunyoung.rxproject.model.ListItem
 
-class ListAdapter : ListAdapter<ListItem, RecyclerView.ViewHolder>(diffUtil) {
+class ListAdapter(
+	private val itemHandler: ItemHandler? = null
+) : ListAdapter<ListItem, RecyclerView.ViewHolder>(diffUtil) {
 	
 	companion object {
 		
@@ -38,11 +40,11 @@ class ListAdapter : ListAdapter<ListItem, RecyclerView.ViewHolder>(diffUtil) {
 		val inflater = LayoutInflater.from(parent.context)
 		return if (viewType == IMAGE) {
 			ImageViewHolder(
-				ItemImageBinding.inflate(inflater, parent, false)
+				ItemImageBinding.inflate(inflater, parent, false), itemHandler
 			)
 		} else {
 			VideoViewHolder(
-				ItemVideoBinding.inflate(inflater, parent, false)
+				ItemVideoBinding.inflate(inflater, parent, false), itemHandler
 			)
 		}
 	}

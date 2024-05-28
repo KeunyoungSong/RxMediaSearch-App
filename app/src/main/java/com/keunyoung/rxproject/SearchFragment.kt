@@ -1,7 +1,6 @@
 package com.keunyoung.rxproject
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +11,6 @@ import com.keunyoung.rxproject.databinding.FragmentSearchBinding
 import com.keunyoung.rxproject.list.ItemHandler
 import com.keunyoung.rxproject.list.ListAdapter
 import com.keunyoung.rxproject.model.ListItem
-import com.keunyoung.rxproject.repository.SearchRepository
 import com.keunyoung.rxproject.repository.SearchRepositoryImpl
 
 class SearchFragment : Fragment() {
@@ -21,7 +19,7 @@ class SearchFragment : Fragment() {
 	private val viewModel: SearchViewModel by viewModels {
 		SearchViewModel.SearchViewModelFactory(SearchRepositoryImpl(RetrofitManager.searchService))
 	}
-	private val adapter by lazy { ListAdapter() }
+	private val adapter by lazy { ListAdapter(Handler(viewModel)) }
 	
 	override fun onCreateView(
 		inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
