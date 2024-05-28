@@ -1,6 +1,7 @@
 package com.keunyoung.rxproject
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,9 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.keunyoung.rxproject.databinding.FragmentSearchBinding
+import com.keunyoung.rxproject.list.ItemHandler
 import com.keunyoung.rxproject.list.ListAdapter
+import com.keunyoung.rxproject.model.ListItem
 import com.keunyoung.rxproject.repository.SearchRepository
 import com.keunyoung.rxproject.repository.SearchRepositoryImpl
 
@@ -49,7 +52,7 @@ class SearchFragment : Fragment() {
 	
 	private fun initViewModel() {
 		viewModel.listLiveData.observe(viewLifecycleOwner) { listItems ->
-			binding.apply {
+			with(binding) {
 				if (listItems.isEmpty()) {
 					emptyTextView.isVisible = true
 					recyclerView.isVisible = false
@@ -64,6 +67,12 @@ class SearchFragment : Fragment() {
 	
 	fun searchKeyword(text: String) {
 		viewModel.search(text)
+	}
+	
+	class Handler(private val viewModel: SearchViewModel) :ItemHandler {
+		override fun onClickFavorite(item: ListItem) {
+			viewModel.toggleFavorite(item)
+		}
 	}
 	
 }

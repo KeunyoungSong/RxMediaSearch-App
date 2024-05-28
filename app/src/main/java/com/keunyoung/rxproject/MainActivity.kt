@@ -1,6 +1,7 @@
 package com.keunyoung.rxproject
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
@@ -77,7 +78,7 @@ class MainActivity : AppCompatActivity() {
 					return false
 				}
 			})
-		}.debounce(500, TimeUnit.MILLISECONDS)
+		}.debounce(1000, TimeUnit.MILLISECONDS)
 			.subscribeOn(Schedulers.io())
 			.observeOn(AndroidSchedulers.mainThread())
 			.subscribe { query ->
