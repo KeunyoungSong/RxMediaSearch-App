@@ -1,9 +1,9 @@
 package com.keunyoung.rxproject.repository
 
 import com.keunyoung.rxproject.model.ListItem
-import io.reactivex.rxjava3.core.Observable as Observable1
+import io.reactivex.rxjava3.core.Observable
 
 interface SearchRepository {
 	
-	fun search(query: String): Observable1<List<ListItem>>
+	fun search(query: String): Observable<List<ListItem>>
 }
